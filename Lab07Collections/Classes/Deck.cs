@@ -32,34 +32,31 @@ namespace Lab07Collections
             cards[index] = default;
             for (int i = 0; i < counter; i++)
             {
-                if (i >= index)
-                {
-                    cards[i] = cards[i + 1];
-                }
+                if (i >= index) cards[i] = cards[i + 1];
             }
             if (counter < (cards.Length / 2)) Array.Resize(ref cards, (cards.Length / 2));
             counter--;
         }
+        /// <summary>
+        /// Method used to shuffle the deck. 
+        /// </summary>
         public void Shuffle()
         {
             int i = 0;
-            Random random = new Random();
-            int[] checker = new int[counter];
             T[] shuffler = new T[cards.Length];
+            int[] checker = new int[counter];
+            Random random = new Random();
 
             while (i < counter)
             {
                 int ranNum = random.Next(0, counter);
-                for (int j = 0; j < i; j++)
-                {
-                    if (checker[j] == ranNum)
-                    {
-                        ranNum = random.Next(0, counter);
-                    }
-                }
                 checker[i] = ranNum;
                 shuffler[i] = cards[checker[i]];
                 i++;
+                while (Array.IndexOf(checker, ranNum) != -1)
+                {
+                    ranNum = random.Next(0, counter);
+                }
             }
             cards = shuffler;
         }
