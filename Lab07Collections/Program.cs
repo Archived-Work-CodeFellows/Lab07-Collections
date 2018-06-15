@@ -10,19 +10,19 @@ namespace Lab07Collections
             Deck<Card> myDeck = new Deck<Card>
             {
                 new Card(1, Card.Suite.Hearts),
-                new Card(7, Card.Suite.Club),
-                new Card(1, Card.Suite.Spade),
-                new Card(8, Card.Suite.Hearts),
-                new Card(1, Card.Suite.Diamond),
-                new Card(10, Card.Suite.Hearts),
-                new Card(1, Card.Suite.Spade),
-                new Card(8, Card.Suite.Hearts),
-                new Card(1, Card.Suite.Diamond),
-                new Card(10, Card.Suite.Hearts),
-                new Card(11, Card.Suite.Club),
-                new Card(10, Card.Suite.Club),
-                new Card(1, Card.Suite.Spade),
+                new Card(2, Card.Suite.Club),
+                new Card(3, Card.Suite.Spade),
                 new Card(4, Card.Suite.Hearts),
+                new Card(5, Card.Suite.Diamond),
+                new Card(6, Card.Suite.Hearts),
+                new Card(7, Card.Suite.Spade),
+                new Card(8, Card.Suite.Hearts),
+                new Card(9, Card.Suite.Diamond),
+                new Card(10, Card.Suite.Hearts),
+                new Card(4, Card.Suite.Club),
+                new Card(1, Card.Suite.Club),
+                new Card(1, Card.Suite.Spade),
+                new Card(8, Card.Suite.Hearts),
                 new Card(6, Card.Suite.Spade)
             };
 
