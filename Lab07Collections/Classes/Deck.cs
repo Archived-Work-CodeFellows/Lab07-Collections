@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Lab07Collections.Classes;
 
 namespace Lab07Collections
 {
@@ -23,22 +24,52 @@ namespace Lab07Collections
             cards[counter++] = card;
         }
         /// <summary>
-        /// Takes a give index and removes the card at that specific
+        /// Takes a given index and removes the card at that specific
         /// index. Then collapses the collection and resets counter
         /// </summary>
         /// <param name="index">Index to be removed</param>
-        public void Remove(int index)
+        public bool Remove(int index)
         {
-            cards[index] = default;
-            for (int i = 0; i < counter; i++)
+            try
             {
-                if (i >= index) cards[i] = cards[i + 1];
+                cards[index] = default;
+                for (int i = 0; i < counter; i++)
+                {
+                    if (i >= index) cards[i] = cards[i + 1];
+                }
+                if (counter < (cards.Length / 2)) Array.Resize(ref cards, (cards.Length / 2));
+                counter--;
             }
-            if (counter < (cards.Length / 2)) Array.Resize(ref cards, (cards.Length / 2));
-            counter--;
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Oh no, I don't have that!");
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            return true;
         }
         /// <summary>
-        /// Method used to shuffle the deck. 
+        /// Used to find a specific card with in a deck.
+        /// Useful for proving shuffling
+        /// </summary>
+        /// <param name="index">index to be found</param>
+        /// <returns>Object if found, else default</returns>
+        public T Find(int index)
+        {
+            try
+            {
+                T found = cards[index];
+                return found;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("oops I don't have that!");
+                Console.WriteLine(ex.Message);
+            }
+            return default;
+        }
+        /// <summary>
+        /// Method used to shuffle the deck.
         /// </summary>
         public void Shuffle()
         {
