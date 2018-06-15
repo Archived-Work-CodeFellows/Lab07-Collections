@@ -42,21 +42,20 @@ namespace Lab07Collections
         /// </summary>
         public void Shuffle()
         {
-            int i = 0;
             T[] shuffler = new T[cards.Length];
-            int[] checker = new int[counter];
+            string[] checker = new string[counter];
             Random random = new Random();
+            int ranNum = random.Next(0, counter);
 
-            while (i < counter)
+            for (int i = 0; i < counter; i++)
             {
-                int ranNum = random.Next(0, counter);
-                checker[i] = ranNum;
-                shuffler[i] = cards[checker[i]];
-                i++;
-                while (Array.IndexOf(checker, ranNum) != -1)
+                while (Array.IndexOf(checker, ranNum.ToString()) != -1)
                 {
                     ranNum = random.Next(0, counter);
                 }
+                checker[i] = ranNum.ToString();
+                shuffler[i] = cards[Int32.Parse(checker[i])];
+                ranNum = random.Next(0, counter);
             }
             cards = shuffler;
         }
